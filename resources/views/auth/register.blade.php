@@ -94,7 +94,7 @@
                         type="password"
                         placeholder="Repite tu Password"
                         class="border p-3 w-full rounded-lg"
-                        />
+                        />   
 
                 </div>
 
