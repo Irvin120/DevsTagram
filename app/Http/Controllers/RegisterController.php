@@ -20,10 +20,12 @@ class RegisterController extends Controller
         // dd($request); day end don
         // dd($request->get('email'));
 
-        //Modificando el Request
+        //MODIFICANDO EL REQUEST
         $request->request->add(['username' => Str::slug($request->username)]);
+        //slug Y lower son metodos para cambiar el dato, funcionan para cambiar el tipo de dato
 
-        //Validacion
+
+        //VALIDACION
         $this->validate($request, [
             'name' =>     'required|string|min:3|max:30',
             'username' => 'required|unique:users|string|min:3|max:20',
@@ -31,9 +33,8 @@ class RegisterController extends Controller
             'password' => 'required|min:6|max:10|confirmed',
         ]);
 
-        // dd('Creando Usuario');
-        //lower
-        //slug
+
+        //CREANO USUARIO
 
         User::create([
             'name' => $request->name,
@@ -41,6 +42,9 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make( $request->password)
         ]);
+
+        //REDIRECCIONAR
+        return redirect()->route('posts.index');
 
 
     }

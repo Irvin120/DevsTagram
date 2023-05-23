@@ -7,4 +7,8 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     //
+    public function index()
+    {
+        dd('desde el Muro');
+    }
 }
