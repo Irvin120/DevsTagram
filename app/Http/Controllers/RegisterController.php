@@ -25,7 +25,7 @@ class RegisterController extends Controller
         //slug Y lower son metodos para cambiar el dato, funcionan para cambiar el tipo de dato
 
 
-        //VALIDACION
+        //VALIDACION DE FORMULARIO
         $this->validate($request, [
             'name' =>     'required|string|min:3|max:30',
             'username' => 'required|unique:users|string|min:3|max:20',
@@ -42,6 +42,19 @@ class RegisterController extends Controller
             'email' => $request->email,
             'password' => Hash::make( $request->password)
         ]);
+
+
+        //AUTENTIFICACION DEL USUARIO
+
+        //--------------METODO 1--------//
+        // auth()->attempt([
+        //     'email' => $request->email,
+        //     'password' => $request->password
+        // ]);
+
+        //--------------METODO 2--------//
+        auth()->attempt($request->only('email', 'password'));
+
 
         //REDIRECCIONAR
         return redirect()->route('posts.index');
