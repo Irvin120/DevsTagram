@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
+
+    //estos son los datos que laravel debe de enviar, esto se usa para que laravel antes de enviar los datos sepa que es lo que se esta enviando
+    protected $fillable = [
+        'titulo',
+        'descripcion',
+        'imagen',
+        'user_id'
+    ];
 }

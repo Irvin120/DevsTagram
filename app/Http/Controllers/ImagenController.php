@@ -23,7 +23,7 @@ public function store(Request $request){
     $imagenServidor->fit(1000, 1000); //modificando el tamaño de la imagen gracia a la clase fit
 
     $imagenPath = public_path('uploads') . '/' . $nombreImagen; // Construccion de la  ruta de la carpeta donde y con que nombre se guardara la imagen
-    $imagenServidor->save($imagenPath); //Se guarda la imagen en el sercidor gracias al metodo save
+    $imagenServidor->save($imagenPath); //Se guarda la imagen en el servidor gracias al metodo save
 
     return response()->json(['imagen' => $nombreImagen ]);
 }}
