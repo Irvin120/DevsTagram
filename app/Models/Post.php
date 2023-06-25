@@ -16,4 +16,18 @@ class Post extends Model
         'imagen',
         'user_id'
     ];
+
+
+    //relacion inversa entre el modelo post y user
+    public function user()
+    {
+
+        //especificamos que tipos de datos queremos que cargue
+        return $this->belongsTo(User::class)->select(['name', 'username']);
+    }
+
+    public function comentarios()
+    {   //relacion de uno a muchos, un post tendra multiples comentarios
+        return $this->hasMany(Comentario::class);
+    }
 }
